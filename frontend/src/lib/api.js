@@ -1,6 +1,6 @@
 const fastapi = (operation, url, params, success_callback, failure_callback) => {
     let method = operation
-    let content_type = "application/json"
+    let content_type = 'application/json'
     let body = JSON.stringify(params)
 
     let _url = import.meta.env.VITE_SERVER_URL+url
@@ -15,30 +15,30 @@ const fastapi = (operation, url, params, success_callback, failure_callback) => 
         }
     }
 
-    if (method !== 'get'){
+    if (method !== 'get') {
         options['body'] = body
     }
 
     fetch(_url, options)
-        .then(response =>{
+        .then(response => {
             response.json()
-            .then(json => {
-                if(response.status >= 200 && response.status < 300) {
-                    if(success_callback){
-                        success_callback(json)
-                    }
-                }else{
-                    if (failure_callback){
-                        failure_callback(json)
+                .then(json => {
+                    if(response.status >= 200 && response.status < 300) {  // 200 ~ 299
+                        if(success_callback) {
+                            success_callback(json)
+                        }
                     }else {
-                        alert(JSON.stringify(json))
+                        if (failure_callback) {
+                            failure_callback(json)
+                        }else {
+                            alert(JSON.stringify(json))
+                        }
                     }
-                }
-            })
-            .catch(error => {
-                alert(JSON.stringify(error))
-            })
-        }) 
-    
+                })
+                .catch(error => {
+                    alert(JSON.stringify(error))
+                })
+        })
 }
+
 export default fastapi
