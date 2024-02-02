@@ -10,8 +10,12 @@ def create_user(db: Session, user_create: UserCreate):
                    password=pwd_context.hash(user_create.password1),
                    email=user_create.email
                    )
-    db.add(db.user)
+    db.add(db_user)
     db.commit()
 
-
+def get_existing_user(db: Session, user_create:UserCreate):
+    return db.query(User).filter(
+        (User.username == user_create.username) |
+        (User.email == user_create.email)
+    ).first()
 
