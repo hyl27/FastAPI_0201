@@ -21,8 +21,8 @@ const fastapi = (operation, url, params, success_callback, failure_callback) => 
 
     fetch(_url, options)
         .then(response => {
-            if(response.status===204){
-                if(success_callback){
+            if(response.status === 204) {  // No content
+                if(success_callback) {
                     success_callback()
                 }
                 return

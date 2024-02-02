@@ -4,7 +4,7 @@
     export let params = {}
     let question_id = params.question_id
     //console.log('question_id:'+ question_id)
-    let question = {}
+    let question = {answers:[]}
     let content = ""
 
     function get_question(){
@@ -33,6 +33,11 @@
 <h1>{question.subject}</h1>
 <div> {question.content}</div>
 
+<ul>
+    {#each question.answers as answer}
+        <li>{answer.content}</li>
+    {/each}
+</ul>
 <form method="post">
     <textarea rows ="15" bind:value={content}></textarea>
     <input type="submit" value="답변등록" on:click="{post_answer}">
