@@ -7,3 +7,4 @@ class Question(BaseModel):
     subject: str
     content: str
     create_date: datetime.datetime
+    answers: list[Answer] = []
