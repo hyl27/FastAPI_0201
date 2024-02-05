@@ -1,7 +1,7 @@
 <script>
     import fastapi from "../lib/api"
     import Error from "../components/Error.svelte"
-    import { push } from 'svelte-spa-router'
+    import { link, push } from 'svelte-spa-router'
     import { is_login, username } from "../lib/store"
 
     export let params = {}
@@ -49,6 +49,12 @@
                     <div class="mb-2">{ question.user ? question.user.username : ""}</div>
                     <div>{question.create_date}</div>
                 </div>
+            </div>
+            <div class="my-3">
+                {#if question.user && $username === question.user.username }
+                <a use:link href="/question-modify/{question_id}"
+                    class="btn btn-sm btn-outline-secondary">수정</a>
+                {/if}
             </div>
         </div>
     </div>
