@@ -26,7 +26,7 @@
 <div class="container my-3">
   <table class="table">
       <thead>
-      <tr class="table-dark">
+      <tr class="text-center table-dark">
           <th>번호</th>
           <th style="width:50%">제목</th>
           <th>글쓴이</th>
