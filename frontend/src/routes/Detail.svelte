@@ -2,7 +2,7 @@
     import fastapi from "../lib/api"
     import Error from "../components/Error.svelte"
     import { push } from 'svelte-spa-router'
-    import { is_login } from "../lib/store"
+    import { is_login, username } from "../lib/store"
 
     export let params = {}
     let question_id = params.question_id
@@ -45,8 +45,9 @@
         <div class = "card-body">
             <div class ="card-text" style="white-space: pre-line;">{question.content}</div>
             <div class="d-flex justify-content-end">
-                <div class="badge bg-light text-dark p-2">
-                    {question.create_date}
+                <div class="badge bg-light text-dark p-2 text-start">
+                    <div class="mb-2">{ question.user ? question.user.username : ""}</div>
+                    <div>{question.create_date}</div>
                 </div>
             </div>
         </div>
@@ -73,8 +74,9 @@
         <div class="card-body">
             <div class="card-text" style="white-space: pre-line;">{answer.content}</div>
             <div class="d-flex justify-content-end">
-                <div class="badge bg-light text-dark p-2">
-                    {answer.create_date}
+                <div class="badge bg-light text-dark p-2 text-start">
+                    <div class="mb-2">{ answer.user ? answer.user.username : ""}</div>
+                    <div>{answer.create_date}</div>
                 </div>
             </div>
         </div>
