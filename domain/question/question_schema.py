@@ -28,4 +28,7 @@ class QuestionList(BaseModel):
     question_list: list[Question] = []
 
 class QuestionUpdate(QuestionCreate):
-    question_id: int   
+    question_id: int 
+
+class QuestionDelete(BaseModel):
+    question_id: int 
