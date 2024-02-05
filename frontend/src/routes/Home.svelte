@@ -1,7 +1,7 @@
 <script>
   import fastapi from "../lib/api"
   import { link } from 'svelte-spa-router'
-  import { page, is_login } from "../lib/store"
+  import { page, is_login, username } from "../lib/store"
 
   let question_list = []
   let size = 10
@@ -28,17 +28,19 @@
       <thead>
       <tr class="table-dark">
           <th>번호</th>
-          <th>제목</th>
+          <th style="width:50%">제목</th>
+          <th>글쓴이</th>
           <th>작성일시</th>
       </tr>
       </thead>
       <tbody>
       {#each question_list as question, i}
-      <tr>
+      <tr class="text-center">
           <td>{i+1}</td>
-          <td>
+          <td class="text-start">
               <a use:link href="/detail/{question.id}">{question.subject}</a>
           </td>
+          <td>{question.user ? question.user.username : "" }</td>
           <td>{question.create_date}</td>
       </tr>
       {/each}
