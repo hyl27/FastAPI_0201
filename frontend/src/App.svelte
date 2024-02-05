@@ -4,6 +4,7 @@
   import Detail from "./routes/Detail.svelte"
   import QuestionCreate from "./routes/QuestionCreate.svelte"
   import UserCreate from "./routes/UserCreate.svelte"
+  import Navigation from './components/Navigation.svelte'
 
   const routes = {
     '/': Home,
@@ -13,4 +14,5 @@
   }
 </script>
 
+<Navigation />
 <Router {routes}/>
