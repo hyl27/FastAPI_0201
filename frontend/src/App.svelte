@@ -5,12 +5,14 @@
   import QuestionCreate from "./routes/QuestionCreate.svelte"
   import UserCreate from "./routes/UserCreate.svelte"
   import Navigation from './components/Navigation.svelte'
+  import UserLogin from "./routes/UserLogin.svelte"
 
   const routes = {
     '/': Home,
     '/detail/:question_id': Detail,
     '/question-create': QuestionCreate,
     '/user-create': UserCreate,
+    '/user-login': UserLogin,
   }
 </script>
 
