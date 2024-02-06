@@ -13,6 +13,7 @@ class Question(BaseModel):
     answers: list[Answer] = []
     user: User | None
     modify_date: datetime.datetime | None = None
+    voter: list[User] = []
 
 class QuestionCreate(BaseModel):
     subject: str
