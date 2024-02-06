@@ -183,4 +183,4 @@ package
 # End of https://www.toptal.com/developers/gitignore/api/svelte,python
 
 # DB
-\myapi.db
+myapi.db
