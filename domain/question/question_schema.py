@@ -12,6 +12,7 @@ class Question(BaseModel):
     create_date: datetime.datetime
     answers: list[Answer] = []
     user: User | None
+    modify_date: datetime.datetime | None = None
 
 class QuestionCreate(BaseModel):
     subject: str

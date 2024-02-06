@@ -2,6 +2,8 @@
     import fastapi from "../lib/api"
     import Error from "../components/Error.svelte"
     import { link, push } from 'svelte-spa-router'
+    import moment from 'moment/min/moment-with-locales'
+    moment.locale('ko')
     import { is_login, username } from "../lib/store"
 
     export let params = {}
@@ -80,9 +82,15 @@
         <div class = "card-body">
             <div class ="card-text" style="white-space: pre-line;">{question.content}</div>
             <div class="d-flex justify-content-end">
+                {#if question.modify_date }
+                <div class="badge bg-light text-dark p-2 text-start mx-3">
+                    <div class="mb-2">modified at</div>
+                    <div>{moment(question.modify_date).format("YYYY년 MM월 DD일 a hh:mm")}</div>
+                </div>
+                {/if}
                 <div class="badge bg-light text-dark p-2 text-start">
                     <div class="mb-2">{ question.user ? question.user.username : ""}</div>
-                    <div>{question.create_date}</div>
+                    <div>{moment(question.create_date).format("YYYY년 MM월 DD일 a hh:mm")}</div>
                 </div>
             </div>
             <div class="my-3">
@@ -117,9 +125,15 @@
         <div class="card-body">
             <div class="card-text" style="white-space: pre-line;">{answer.content}</div>
             <div class="d-flex justify-content-end">
+                {#if answer.modify_date }
+                <div class="badge bg-light text-dark p-2 text-start mx-3">
+                    <div class="mb-2">modified at</div>
+                    <div>{moment(answer.modify_date).format("YYYY년 MM월 DD일 a hh:mm")}</div>
+                </div>
+                {/if}
                 <div class="badge bg-light text-dark p-2 text-start">
                     <div class="mb-2">{ answer.user ? answer.user.username : ""}</div>
-                    <div>{answer.create_date}</div>
+                    <div>{moment(answer.create_date).format("YYYY년 MM월 DD일 a hh:mm")}</div>
                 </div>
             </div>
             <div class="my-3">

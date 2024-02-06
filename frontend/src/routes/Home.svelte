@@ -1,6 +1,8 @@
 <script>
   import fastapi from "../lib/api"
   import { link } from 'svelte-spa-router'
+  import moment from 'moment/min/moment-with-locales'
+    moment.locale('ko')
   import { page, is_login, username } from "../lib/store"
 
   let question_list = []
@@ -41,7 +43,7 @@
               <a use:link href="/detail/{question.id}">{question.subject}</a>
           </td>
           <td>{question.user ? question.user.username : "" }</td>
-          <td>{question.create_date}</td>
+          <td>{moment(question.create_date).format("YYYY년 MM월 DD일 a hh:mm")}</td>
       </tr>
       {/each}
       </tbody>
