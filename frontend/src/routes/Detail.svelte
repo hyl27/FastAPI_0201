@@ -104,6 +104,12 @@
                     <div>{answer.create_date}</div>
                 </div>
             </div>
+            <div class="card my-3">
+                {#if answer.user && $username === answer.user.username }
+                <a use:link href="/answer-modify/{answer.id}"
+                    class="btn btn-sm btn-outline-secondary">수정</a>
+                {/if}
+            </div>
         </div>
     </div>
     {/each}
