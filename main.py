@@ -1,5 +1,7 @@
 from fastapi import FastAPI
 from starlette.middleware.cors import CORSMiddleware
+from starlette.responses import FileResponse
+from starlette.staticfiles import StaticFiles
 from domain.question import question_router
 from domain.answer import answer_router
 from domain.user import user_router
@@ -22,4 +24,8 @@ app.add_middleware(
 app.include_router(question_router.router)
 app.include_router(answer_router.router)
 app.include_router(user_router.router)
+app.mount("/assets", StaticFiles(directory="frontend/dist/assets"))
 
+@app.get("/")
+def index():
+    return FileResponse("frontend/dist/index.html")
