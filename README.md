@@ -32,8 +32,9 @@ $ npm run dev
 
 
 ## 프로젝트 사용 방법
-`$ npm run dev` 실행 후,
-http://localhost:5173/ 에 접속한다.
+`cd frontend`에서 
+`npm run build` 하여 프론트엔드 서버없이 접속 가능하다.  
+http://127.0.0.1:8000/ 
 
 ## 참고자료
 [점프 투 FastAPI](https://wikidocs.net/book/8531)
